@@ -1,4 +1,4 @@
-# bash-aliases
+# linux-setup
 
 Setup (untested):
 - ```cd ~```

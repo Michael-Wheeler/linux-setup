@@ -26,6 +26,12 @@ function checkcode {
 }
 
 ######## Git ########
+# Push to git after running code checks
+function pushgit {
+    checkcode
+    git push
+}
+
 # To remove local git branches whose remote equivalent has been deleted
 function cleangit {
     git fetch -a -p
@@ -131,6 +137,12 @@ alias libproduct="cd ~/git/opia/opia-opia-lib-product"
 
 # cd into cycle saver PHP
 alias cyclesaver="cd ~/git/personal/cycle-saver-api-php"
+
+# cd into linux setup
+alias linuxsetup="cd ~/git/personal/linux-setup"
+
+# cd into personal site
+alias personalsite="cd ~/git/personal/personal-site"
 
 ######## PHPStorm ########
 # Start PHPStorm

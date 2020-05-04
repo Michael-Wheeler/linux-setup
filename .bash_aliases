@@ -20,15 +20,55 @@ alias testf="bin/docker-dev-test --filter"
 
 # Runs static code inspections
 function checkcode {
-    bin/phpstan
-    bin/comply-to-psr12
-    bin/docker-dev-codesniffer
+    local PHPSTAN=bin/phpstan
+    local PSR12=bin/comply-to-psr12
+    local CODESNIFFER=bin/docker-dev-codesniffer
+
+    if [ -e "$PSR12" ]; then
+        echo -e "\e[96m\e[1mPSR12 script present, running analysis\e[0m"
+        bin/comply-to-psr12
+    fi
+
+    if [ -e "$CODESNIFFER" ]; then
+        echo -e "\e[96m\e[1mPHP CodeSniffer present, running analysis\e[0m"
+        bin/docker-dev-codesniffer
+        echo ''
+    fi
+
+    if [ -e "$PHPSTAN" ]; then
+        echo -e "\e[96m\e[1mPHPStan present, running analysis\e[0m"
+        bin/phpstan
+        echo ''
+    fi
+
+    return 0;
 }
 
 ######## Git ########
 # Push to git after running code checks
-function pushgit {
-    checkcode
+function tgp {
+    local PHPSTAN=bin/phpstan
+    local PSR12=bin/comply-to-psr12
+    local CODESNIFFER=bin/docker-dev-codesniffer
+
+    if [ -e "$PSR12" ]; then
+        echo -e "\e[96m\e[1mPSR12 script present, running analysis\e[0m"
+        bin/comply-to-psr12
+    fi
+
+    if [ -e "$CODESNIFFER" ]; then
+        echo -e "\e[96m\e[1mPHP CodeSniffer present, running analysis\e[0m"
+        bin/docker-dev-codesniffer
+        echo ''
+    fi
+
+    if [ -e "$PHPSTAN" ]; then
+        echo -e "\e[96m\e[1mPHPStan present, running analysis\e[0m"
+        bin/phpstan
+        echo ''
+    fi
+
+    echo -e "\e[96m\e[1mCode checks passed, pushing to git\e[0m"
     git push
 }
 

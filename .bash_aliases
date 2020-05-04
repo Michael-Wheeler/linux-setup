@@ -20,6 +20,7 @@ alias testf="bin/docker-dev-test --filter"
 
 # Runs static code inspections
 function checkcode {
+    bin/phpstan
     bin/comply-to-psr12
     bin/docker-dev-codesniffer
 }

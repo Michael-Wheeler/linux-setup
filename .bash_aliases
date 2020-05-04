@@ -46,7 +46,7 @@ function checkcode {
 
 ######## Git ########
 # Push to git after running code checks
-function tgp {
+function pushgit {
     local PHPSTAN=bin/phpstan
     local PSR12=bin/comply-to-psr12
     local CODESNIFFER=bin/docker-dev-codesniffer
@@ -68,7 +68,7 @@ function tgp {
         echo ''
     fi
 
-    echo -e "\e[96m\e[1mCode checks passed, pushing to git\e[0m"
+    echo -e "\e[96m\e[1mCode checks passed, pushing code to GitHub\e[0m"
     git push
 }
 

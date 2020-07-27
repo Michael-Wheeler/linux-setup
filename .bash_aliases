@@ -74,11 +74,22 @@ function pushgit {
 
 # To remove local git branches whose remote equivalent has been deleted
 function cleangit {
+    echo -e "\e[96m\e[1mFetching branches and tags from origin, tracking branches with no remote reference will be pruned\e[0m"
     git fetch -a -p
+    echo ''
+
+    DELETE='-d'
+    if [[ $1 == "-D" ]]; then
+        echo -e "\e[1m\e[31mHard delete specified, local branches with remote references that have been closed or merged will be deleted\e[0m"
+        DELETE='-D'
+    fi
+
+    echo -e "\e[96m\e[1mRemoving local refs to remote branches\e[0m"
+    git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch $DELETE;
+    echo ''
+
+    echo -e "\e[96m\e[1mMerging current branch with origin\e[0m"
     git merge FETCH_HEAD
-    git remote prune origin
-    git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d;
-    git pull
 }
 
 ######## Repos ########
@@ -95,7 +106,7 @@ alias notify="cd ~/git/opia/opia-notify"
 alias product="cd ~/git/opia/opia-product"
 
 # cd into reseller
-alias reseller="cd ~/git/opia/opia-product"
+alias reseller="cd ~/git/opia/opia-reseller"
 
 # cd into cloud
 alias cloud="cd ~/git/opia/opia-cloud"
@@ -124,9 +135,6 @@ alias cms="cd ~/git/opia/opia-cms"
 # cd into crm
 alias crm="cd ~/git/opia/opia-crm"
 
-# cd into qualify
-alias qualify="cd ~/git/opia/opia-qualify"
-
 # cd into note
 alias note="cd ~/git/opia/opia-note"
 
@@ -152,28 +160,28 @@ alias securesend="cd ~/git/opia/opia-secure-send"
 alias talkdesk="cd ~/git/opia/opia-talkdesk"
 
 # cd into opia-it-service-desk-scripts
-alias servicedesk="cd ~/git/opia/opia-opia-it-service-desk-scripts"
+alias servicedesk="cd ~/git/opia/opia-it-service-desk-scripts"
 
 # cd into opia-lib-hub
-alias libhub="cd ~/git/opia/opia-opia-lib-hub"
+alias libhub="cd ~/git/opia/opia-lib-hub"
 
 # cd into opia-lib-ocr
-alias libocr="cd ~/git/opia/opia-opia-lib-ocr"
+alias libocr="cd ~/git/opia/opia-lib-ocr"
 
 # cd into opia-lib-qualify
-alias libqualify="cd ~/git/opia/opia-opia-lib-qualify"
+alias libqualify="cd ~/git/opia/opia-lib-qualify"
 
 # cd into opia-lib-reseller
-alias libreseller="cd ~/git/opia/opia-opia-lib-reseller"
+alias libreseller="cd ~/git/opia/opia-lib-reseller"
 
 # cd into opia-lib-skeleton
-alias libskeleton="cd ~/git/opia/opia-opia-lib-skeleton"
+alias libskeleton="cd ~/git/opia/opia-lib-skeleton"
 
 # cd into opia-lib-visitor
-alias libvisitor="cd ~/git/opia/opia-opia-lib-visitor"
+alias libvisitor="cd ~/git/opia/opia-lib-visitor"
 
 # cd into opia-lib-product
-alias libproduct="cd ~/git/opia/opia-opia-lib-product"
+alias libproduct="cd ~/git/opia/opia-lib-product"
 
 # cd into cycle saver PHP
 alias cyclesaver="cd ~/git/personal/cycle-saver-api-php"
@@ -183,6 +191,9 @@ alias linuxsetup="cd ~/git/personal/linux-setup"
 
 # cd into personal site
 alias personalsite="cd ~/git/personal/personal-site"
+
+# cd into bison
+alias bison="cd ~/git/opia/opia-promo-framework-bison"
 
 ######## PHPStorm ########
 # Start PHPStorm

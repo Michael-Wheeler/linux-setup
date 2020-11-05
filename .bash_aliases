@@ -1,14 +1,15 @@
 ######## Docker ########
-# Stop Running Docker Containers
-alias stopdockers="docker stop $(docker ps -a -q)"
 
+# Stop All Running Docker Containers
 function stopdocker {
     docker stop $(docker ps -a -q)
+    docker network prune -f
 }
 
-# Remove Stopped Containers
+# Remove Stopped Containers and Networks
 function rmdocker {
     docker rm $(docker ps -a -q)
+    docker network prune -f
 }
 
 ######## PHP ########

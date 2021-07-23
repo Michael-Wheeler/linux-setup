@@ -93,96 +93,25 @@ function cleangit {
     git merge FETCH_HEAD
 }
 
-######## Repos ########
-# cd into hub
-alias hub="cd ~/git/opia/opia-hub"
+######## Prductivity Tools ########
 
-# cd into storage
-alias storage="cd ~/git/opia/opia-storage"
+function tagtime {
+    cd ~/git/personal/TagTime/
+    ./tagtimed.pl &
+}
 
-# cd into notify
-alias notify="cd ~/git/opia/opia-notify"
+alias solaar="~/git/personal/Solaar/bin/solaar &"
 
-# cd into product
-alias product="cd ~/git/opia/opia-product"
+function startseq {
+    solaar
+    tagtime &
+    sudo openvpn --config /../../../home/michael/Documents/Michael_Wheeler@52.208.69.192.ovpn
+}
 
-# cd into reseller
-alias reseller="cd ~/git/opia/opia-reseller"
-
-# cd into cloud
-alias cloud="cd ~/git/opia/opia-cloud"
-
-# cd into auth
-alias auth="cd ~/git/opia/opia-auth"
-
-# cd into qualify
-alias qualify="cd ~/git/opia/opia-qualify"
-
-# cd into skeleton
-alias skeleton="cd ~/git/opia/opia-skeleton"
-
-# cd into recycler-portal
-alias recycler="cd ~/git/opia/opia-recycler-portal"
-
-# cd into ocr validator
-alias validator="cd ~/git/opia/opia-ocr-validator"
-
-# cd into cloud
-alias cloud="cd ~/git/opia/opia-cloud"
-
-# cd into cms
-alias cms="cd ~/git/opia/opia-cms"
-
-# cd into crm
-alias crm="cd ~/git/opia/opia-crm"
-
-# cd into note
-alias note="cd ~/git/opia/opia-note"
-
-# cd into ocr
-alias ocr="cd ~/git/opia/opia-ocr"
-
-# cd into packages
-alias packages="cd ~/git/opia/opia-packages"
-
-# cd into promo-base
-alias promobase="cd ~/git/opia/opia-promo-base"
-
-# cd into promo-notifier
-alias promonotifier="cd ~/git/opia/opia-promo-notifier"
-
-# cd into visitor
-alias visitor="cd ~/git/opia/opia-visitor"
-
-# cd into secure-send
-alias securesend="cd ~/git/opia/opia-secure-send"
-
-# cd into talkdesk
-alias talkdesk="cd ~/git/opia/opia-talkdesk"
-
-# cd into opia-it-service-desk-scripts
-alias servicedesk="cd ~/git/opia/opia-it-service-desk-scripts"
-
-# cd into opia-lib-hub
-alias libhub="cd ~/git/opia/opia-lib-hub"
-
-# cd into opia-lib-ocr
-alias libocr="cd ~/git/opia/opia-lib-ocr"
-
-# cd into opia-lib-qualify
-alias libqualify="cd ~/git/opia/opia-lib-qualify"
-
-# cd into opia-lib-reseller
-alias libreseller="cd ~/git/opia/opia-lib-reseller"
-
-# cd into opia-lib-skeleton
-alias libskeleton="cd ~/git/opia/opia-lib-skeleton"
-
-# cd into opia-lib-visitor
-alias libvisitor="cd ~/git/opia/opia-lib-visitor"
-
-# cd into opia-lib-product
-alias libproduct="cd ~/git/opia/opia-lib-product"
+# cd into Opia repos
+function op {
+    cd ~/git/opia/opia-$1
+}
 
 # cd into cycle saver PHP
 alias cyclesaver="cd ~/git/personal/cycle-saver-api-php"
@@ -192,9 +121,6 @@ alias linuxsetup="cd ~/git/personal/linux-setup"
 
 # cd into personal site
 alias personalsite="cd ~/git/personal/personal-site"
-
-# cd into bison
-alias bison="cd ~/git/opia/opia-promo-framework-bison"
 
 ######## PHPStorm ########
 # Start PHPStorm

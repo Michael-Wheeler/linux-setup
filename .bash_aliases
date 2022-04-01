@@ -13,9 +13,6 @@ function rmdocker {
 }
 
 ######## PHP ########
-# Composer Install without reqs
-alias icomposer="composer install --ignore-platform-reqs"
-
 # Runs tests in docker container
 alias testf="bin/docker-dev-test --filter"
 
@@ -100,6 +97,8 @@ function tagtime {
     ./tagtimed.pl &
 }
 
+alias stoptagtime="kill -9 $(ps -ef | grep 'tag' | grep -v grep | awk '{print $2}')"
+
 alias solaar="~/git/personal/Solaar/bin/solaar &"
 
 function startseq {
@@ -111,6 +110,11 @@ function startseq {
 # cd into Opia repos
 function op {
     cd ~/git/opia/opia-$1
+}
+
+# cd into Opia repos
+function icomposer {
+    composer $1 --ignore-platform-reqs
 }
 
 # cd into cycle saver PHP
